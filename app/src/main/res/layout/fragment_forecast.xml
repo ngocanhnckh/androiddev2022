@@ -10,44 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="100px"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50px"
-            android:layout_marginLeft="35px"
 
-            android:text="Monday" />
-
-        <ImageView
-            android:layout_width="300px"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icons8_sun_star"
-            android:layout_marginLeft="35px"></ImageView>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="25px"
-                android:layout_marginLeft="35px"
-                android:text="Sunny"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="35px"
-
-                android:text="31C - 35C"/>
-        </LinearLayout>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

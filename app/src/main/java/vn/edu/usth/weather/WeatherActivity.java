@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.widget.TextView;
-
+import android.widget.LinearLayout;
 import android.os.Bundle;
 
 public class WeatherActivity extends AppCompatActivity {
@@ -15,8 +15,10 @@ public class WeatherActivity extends AppCompatActivity {
         Log.i("Weather","onCreate");
         setContentView(R.layout.activity_weather);
 
-        ForecastFragment firstFragment = new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, firstFragment).commit();
+        ForecastFragment secondFragment = new ForecastFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.forecast_fr,secondFragment).commit();
+        WeatherFragment firstFragment = new WeatherFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.weather_fr, firstFragment).commit();
 
     }
     @Override
