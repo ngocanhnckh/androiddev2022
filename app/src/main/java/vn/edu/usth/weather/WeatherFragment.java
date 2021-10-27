@@ -60,7 +60,7 @@ public class WeatherFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_weather, container, false);
-        v.setBackgroundColor(0x3300FF00);
+        v.setBackgroundResource(R.drawable.frame);
         return v;
     }
 }
