@@ -19,6 +19,9 @@ import java.io.OutputStream;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -49,7 +52,7 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch (menuItem.getItemId()){
             case R.id.refresh:
-                Toast.makeText(this, "Updating...", Toast.LENGTH_SHORT).show();
+                refresh();
                 return true;
             case R.id.settings:
                 Intent intent = new Intent(this, PrefActivity.class);
@@ -58,6 +61,36 @@ public class WeatherActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    public void refresh(){
+        final Handler handler = new Handler(Looper.getMainLooper()){
+            @Override
+            public void handleMessage(Message msg) {
+                String content = msg.getData().getString("server_response");
+                Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
+            }
+        };
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+
+                // Assume that we got our data from server
+                Bundle bundle = new Bundle();
+                bundle.putString("server_response", "some sample json here");
+
+                Message msg = new Message();
+                msg.setData(bundle);
+                handler.sendMessage(msg);
+            }
+        });
+        t.start();
     }
 
     @Override
