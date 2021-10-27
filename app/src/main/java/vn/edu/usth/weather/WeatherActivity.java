@@ -16,6 +16,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -34,6 +37,27 @@ public class WeatherActivity extends AppCompatActivity {
         //Add Media Player
         MediaPlayer player = MediaPlayer.create(WeatherActivity.this, R.raw.situvoismamere);
         player.start();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case R.id.refresh:
+                Toast.makeText(this, "Updating...", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.settings:
+                Intent intent = new Intent(this, PrefActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 
     @Override
@@ -95,5 +119,7 @@ public class WeatherActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i("Weather", "On Destroy");
     }
+
+
 }
 

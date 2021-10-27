@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.USTHWeather">
         <activity
+            android:name=".PrefActivity"
+            android:exported="false"
+            android:label="@string/title_activity_pref"
+            android:theme="@style/Theme.USTHWeather.NoActionBar" />
+        <activity
             android:name=".WeatherActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
