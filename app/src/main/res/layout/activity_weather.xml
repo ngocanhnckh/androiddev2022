@@ -6,12 +6,9 @@
     android:id="@+id/container"
     android:orientation="vertical"
     tools:context=".WeatherActivity">
-    <FrameLayout
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/weather_fr"/>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/forecast_fr"/>
+        android:id="@+id/viewPager">
+    </androidx.viewpager.widget.ViewPager>
 </LinearLayout>
