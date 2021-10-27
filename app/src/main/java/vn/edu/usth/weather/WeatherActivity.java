@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.AsyncTask;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -53,6 +54,7 @@ public class WeatherActivity extends AppCompatActivity {
         switch (menuItem.getItemId()){
             case R.id.refresh:
                 refresh();
+                new refreshAsync().execute();
                 return true;
             case R.id.settings:
                 Intent intent = new Intent(this, PrefActivity.class);
@@ -91,6 +93,27 @@ public class WeatherActivity extends AppCompatActivity {
             }
         });
         t.start();
+    }
+
+    private class refreshAsync extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids){
+            try {
+                Thread.sleep(10000);
+            }
+            catch (InterruptedException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onProgressUpdate(Void... voids){}
+
+        @Override
+        protected void onPostExecute(Void voids){
+            Toast.makeText(getApplicationContext(), "some json but async", Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 
     @Override
